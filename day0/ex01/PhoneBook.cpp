@@ -1,50 +1,59 @@
 #include "PhoneBook.hpp"
 
-void Contact::setFirstName(std::string firstName)
+void PhoneBook::addNewContact(Contact &contact)
 {
-	_firstName = firstName;
-}
-std::string Contact::getFirstName(void)
-{
-	return _firstName;
+	_contacts[_contactNumber % 8] = contact;
+	_contactNumber++;
 }
 
-void Contact::setLastName(std::string lastName)
+static std::string formatString(std::string field)
 {
-	_lastName = lastName;
+	if (field.size() > 10)
+		return (field.substr(0, 9) + ".");
+	else
+		return (field);
 }
 
-std::string Contact::getLastName(void)
+void PhoneBook::printContacts(void) const
 {
-	return _lastName;
+	int	index;
+	std::string command;
+
+	std::cout << "-----------------CONTACTS-----------------" << std::endl;
+	std::cout << "|" << std::setw(10) << "index" << "|";
+	std::cout << std::setw(10) << "first name" << "|";
+	std::cout << std::setw(10) << "last name" << "|";
+	std::cout << std::setw(10) << "nickname" << "|" << std::endl;
+	for (int i = 0; i < _contactNumber && i < 8; i++)
+	{
+		std::cout << "|" << std::setw(10) << i + 1 << "|";
+		std::cout << std::setw(10) << formatString(_contacts[i].getFirstName()) << "|";
+		std::cout << std::setw(10) << formatString(_contacts[i].getLastName()) << "|";
+		std::cout << std::setw(10) << formatString(_contacts[i].getNickname()) << "|" << std::endl;
+	}
+
+	std::cout << "Enter contact index: ";
+
+	std::cin >> command;
+
+	index = command[0] - '0';
+	if (command.size() > 1 || index < 1 || index > _contactNumber)
+	{
+		std::cout << "Wrong index" << std::endl;
+		return ;
+	}
+	else
+	{
+		printContact(_contacts[index - 1]);
+	}
 }
 
-void Contact::setNickname(std::string nickname)
+void PhoneBook::printContact(Contact contact) const
 {
-	_nickname = nickname;
-}
-
-std::string Contact::getNickname(void)
-{
-	return _nickname;
-}
-
-void Contact::setPhoneNumber(std::string phoneNumber)
-{
-	_phoneNumber = phoneNumber;
-}
-
-std::string Contact::getPhoneNumber(void)
-{
-	return _phoneNumber;
-}
-
-void Contact::setDarketSecret(std::string darkestSecret)
-{
-	_darkestSecret = darkestSecret;
-}
-
-std::string Contact::getDarketSecret(void)
-{
-	return _darkestSecret;
+	std::cout << "Contact info";
+	std::cout << "FirstName : " << contact.getFirstName() << std::endl;
+	std::cout << "LastName : " << contact.getLastName() << std::endl;
+	std::cout << "Nickname : " << contact.getNickname() << std::endl;
+	std::cout << "PhoneNumber : " << contact.getPhoneNumber() << std::endl;
+	std::cout << "DarkestSecret : " << contact.getDarkestSecret() << std::endl;
 }
