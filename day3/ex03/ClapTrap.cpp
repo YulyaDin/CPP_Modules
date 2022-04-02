@@ -43,7 +43,7 @@ void ClapTrap::attack(std::string const & target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << "ClapTrap <" << m_name << ">: is attacked and lost [ " << amount << " ] energy points" << std::endl;
+	std::cout << "ClapTrap <" << m_name << "> is attacked and lost [ " << amount << " ] energy points" << std::endl;
 	m_energy_points -= amount;
 	if (m_energy_points < 0)
 	{

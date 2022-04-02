@@ -38,8 +38,17 @@ void DiamondTrap::attack(std::string const & target)
 	ScavTrap::attack(target);
 }
 
+void DiamondTrap::checkMySelf()
+{
+	std::cout << "Look at me! I'm a beautiful creature!" << std::endl;
+	std::cout << ">> Name - " << getName() << std::endl;
+	std::cout << ">> Hitpoints - " << m_hitpoints << std::endl;
+	std::cout << ">> Energy points - " << m_energy_points << std::endl;
+	std::cout << ">> Damage - " << m_damage << std::endl;
+}
+
 void DiamondTrap::whoAmI()
 {
     std::cout << "DiamondTrap have enterred in Gate keeper mode" << 
-		"[ " << getName() << " ] ~ [" << ClapTrap::getName() << " ]" << std::endl;
+		" [ " << getName() << " ] ~ [ " << ClapTrap::getName() << " ]" << std::endl;
 }

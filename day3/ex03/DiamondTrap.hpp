@@ -15,6 +15,7 @@ public:
     DiamondTrap& operator=(const DiamondTrap& diamondTrap);
 
 	void whoAmI();
+	void checkMySelf();
     void attack(std::string const & target);
 private:
 	std::string getName();

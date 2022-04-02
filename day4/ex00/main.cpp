@@ -1,3 +1,8 @@
+#include "Sorcerer.hpp"
+#include "Peon.hpp"
+#include "Victim.hpp"
+#include <iostream>
+
 int main()
 {
 	Sorcerer robert("Robert", "the Magnificent");
