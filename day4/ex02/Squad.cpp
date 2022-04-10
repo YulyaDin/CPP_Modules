@@ -5,7 +5,7 @@ Squad::Squad() : _numberOfUnits(0), _squad(NULL)
 {
 }
 
-Squad::Squad(Squad const &other)
+Squad::Squad(Squad const &other) : _numberOfUnits(0), _squad(NULL)
 {
 	*this = other;
 }
@@ -44,9 +44,12 @@ Squad &Squad::operator=(Squad const &other)
 	}
 
 	Unit* copy = other._squad;;
-	if (not copy)
+	_numberOfUnits = other._numberOfUnits;
+
+	if (copy == NULL)
 	{
 		_squad = NULL;
+		return (*this);
 	}
 
 	Unit* newUnit = new Unit();
@@ -64,8 +67,6 @@ Squad &Squad::operator=(Squad const &other)
 		
 		copy = copy->next;
 	}
-
-	_numberOfUnits = other._numberOfUnits;
 
 	return(*this);
 }

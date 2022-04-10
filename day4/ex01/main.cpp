@@ -13,6 +13,7 @@ int main()
 	Enemy* b = new RadScorpion();
 	AWeapon* pr = new PlasmaRifle();
 	AWeapon* pf = new PowerFist();
+
 	me->equip(pr);
 	std::cout << *me;
 	me->equip(pf);
@@ -24,5 +25,10 @@ int main()
 	std::cout << *me;
 	me->attack(b);
 	std::cout << *me;
+
+	delete me;
+	delete pr;
+	delete pf;
+
 	return 0;
 }
